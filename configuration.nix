@@ -14,7 +14,7 @@
 
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
-  networking.hostName = "treeman-ranch-nixos";
+  networking.hostName = "nginx-test";
   networking.domain = "";
   services.openssh.enable = true;
   users.users.root.openssh.authorizedKeys.keys = [

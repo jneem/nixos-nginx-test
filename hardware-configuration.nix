@@ -1,10 +1,9 @@
 { modulesPath, ... }:
 {
   imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
-  boot.loader.grub = {
-    efiSupport = true;
-    efiInstallAsRemovable = true;
-    device = "nodev";
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
   fileSystems."/boot" = { device = "/dev/disk/by-uuid/AC27-D9D6"; fsType = "vfat"; };
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "xen_blkfront" ];
