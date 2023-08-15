@@ -44,6 +44,16 @@
               enable = true;
               allowedTCPPorts = [ 22 80 443 ];
             };
+
+            services.nginx = {
+              enable = true;
+              virtualHosts."neeman.me" = {
+                forceSSL = true;
+                enableACME = true;
+                root = "/var/www";
+              };
+            };
+
           }
         ];
       };
