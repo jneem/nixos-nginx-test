@@ -3,11 +3,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { nixpkgs, ... }@inputs:
+  outputs = { nixpkgs, ... }:
     {
       nixosConfigurations.test-nginx = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        #system = "x86_64-linux";
+        # Uncomment the following line for a local build
+        # system = "aarch64-linux";
+
+        # Comment the following line for a local build
+        system = "x86_64-linux";
 
         modules = [
           {
@@ -18,7 +21,8 @@
             ];
 
             system.stateVersion = "23.05";
-            #nixpkgs.crossSystem.system = "aarch64-linux";
+            # Uncomment the following line for a build
+            nixpkgs.crossSystem.system = "aarch64-linux";
 
             nix = {
               extraOptions = ''
